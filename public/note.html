@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="description" content="Une note privée et éphémère vous attend sur QuickNote.">
+    <title>Une note vous attend — QuickNote</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/note.js"></script>
+  </head>
+  <body class="page-note">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <div class="background" aria-hidden="true">
+      <div class="background-glow background-glow-blue"></div>
+      <div class="background-glow background-glow-warm"></div>
+      <div class="background-grid"></div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="QuickNote, accueil">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M11 9.5h12.7L30 15.8v14.7a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V11.5a2 2 0 0 1 2-2Z" fill="currentColor"/>
+              <path d="M23.5 9.5v6.3H30" fill="#bcd5ff"/>
+              <path d="M14 19.5h9M14 23.5h6.5" stroke="#3f7ef0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">Quick<span>Note</span></span>
+        </a>
+
+        <div class="header-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Chiffré de bout en bout
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container note-main">
+      <section class="note-stage" aria-label="Note sécurisée">
+        <div id="loading-state" class="state-card loading-card" aria-busy="true">
+          <div class="loading-orbit" aria-hidden="true">
+            <span></span>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="5.5" y="10" width="13" height="9.5" rx="2.3" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 10V8a3.5 3.5 0 0 1 7 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <p class="loading-title">Ouverture de la note sécurisée…</p>
+          <div class="loading-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+        </div>
+
+        <div id="intro-state" class="state-card intro-card" hidden>
+          <div class="intro-meta">
+            <span id="intro-mode-pill" class="mode-pill">
+              <span class="status-dot" aria-hidden="true"></span>
+              Lecture unique
+            </span>
+            <span id="intro-expiry" class="intro-expiry"></span>
+          </div>
+
+          <div class="intro-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="7" y="13" width="34" height="25" rx="5" stroke="currentColor" stroke-width="1.7"/>
+              <path d="m9 16 15 11 15-11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="35" cy="14" r="7" fill="#eaf2ff"/>
+              <path d="M32.3 14h5M34.8 11.5v5" stroke="#3f7ef0" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <p class="eyebrow">Message privé</p>
+          <h1>Une note vous attend.</h1>
+          <p class="state-lede">
+            Elle est chiffrée de bout en bout. Révélez-la pour la découvrir :
+            elle sera supprimée du serveur à cet instant.
+          </p>
+
+          <button id="reveal-btn" class="btn btn-primary btn-reveal" type="button">
+            <span class="btn-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M2.8 12S6.6 5.8 12 5.8 21.2 12 21.2 12 17.4 18.2 12 18.2 2.8 12 2.8 12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/></svg>
+            </span>
+            <span data-button-label>Révéler la note</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="reveal-warning">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.2" stroke="currentColor" stroke-width="1.4"/><path d="M10 6.5v4.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="13.6" r=".9" fill="currentColor"/></svg>
+            Assurez-vous d’être seul(e) devant l’écran avant de continuer.
+          </p>
+        </div>
+
+        <div id="content-state" class="content-shell" hidden>
+          <article class="note-paper" aria-labelledby="note-display-title">
+            <header class="note-paper-header">
+              <div class="note-status">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span id="content-mode-label">Lecture unique</span>
+              </div>
+              <span id="content-expiry" class="note-expiry"></span>
+            </header>
+
+            <div class="note-content-wrap">
+              <p id="note-display-title" class="note-display-label">Message</p>
+              <div id="note-content" class="note-content" tabindex="-1"></div>
+            </div>
+
+            <footer id="burn-footer" class="reading-footer" hidden>
+              <div class="reading-timer">
+                <div class="reading-timer-head">
+                  <span>La note disparaît de cet écran</span>
+                  <strong id="countdown">01:00</strong>
+                </div>
+                <progress id="read-progress" max="60" value="60">01:00</progress>
+                <p class="reading-note">Le message a déjà été supprimé du serveur.</p>
+              </div>
+              <button id="destroy-btn" class="btn btn-quiet btn-destroy" type="button">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                J’ai lu · Masquer la note
+              </button>
+            </footer>
+
+            <footer id="timed-footer" class="timed-footer" hidden>
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M10 6v4.3l2.6 1.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <p id="timed-expiry-text">Cette note expirera automatiquement.</p>
+            </footer>
+          </article>
+
+          <p class="note-privacy">
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="4.5" y="8.5" width="11" height="8" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7.2 8.5V6.8a2.8 2.8 0 0 1 5.6 0v1.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Seul ce lien permet de déchiffrer le message. QuickNote ne conserve aucune copie lisible.
+          </p>
+        </div>
+
+        <div id="closed-state" class="state-card closed-card" hidden>
+          <div class="closed-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <path d="M24 7v20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 20c0 7 4 11 10 14 6-3 10-7 10-14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="24" cy="38" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <p class="eyebrow">Note éphémère</p>
+          <h1 id="closed-title" tabindex="-1">Ce message a été détruit.</h1>
+          <p id="closed-message" class="state-lede">Il n’existe plus sur le serveur et ne peut pas être rouvert.</p>
+          <a class="btn btn-primary btn-home" href="/">
+            <span data-button-label>Créer ma propre note</span>
+            <span class="btn-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+
+        <div id="error-state" class="state-card error-card" hidden>
+          <div class="error-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <rect x="11" y="10" width="26" height="28" rx="5" stroke="currentColor" stroke-width="1.7"/>
+              <path d="M17 19h14M17 25h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              <circle cx="36" cy="35" r="7" fill="#fff0ef"/>
+              <path d="m33.5 32.5 5 5m0-5-5 5" stroke="#e5695f" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="eyebrow">Lien indisponible</p>
+          <h1 id="error-title" tabindex="-1">Cette note est introuvable.</h1>
+          <p id="error-message" class="state-lede">Vérifiez que le lien est complet, ou demandez-en un nouveau à son expéditeur.</p>
+          <div class="error-actions">
+            <a class="btn btn-primary" href="/">Retour à l’accueil</a>
+            <button id="retry-btn" class="btn btn-quiet" type="button" hidden>Réessayer</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="note-footnote">
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 17 6v4.1c0 3.9-2.8 6.5-7 7.4-4.2-.9-7-3.5-7-7.4V6l7-3.5Z" stroke="currentColor" stroke-width="1.4"/><path d="m7 9.5 2 2 4-4.2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Votre navigateur déchiffre cette note localement. Le serveur ne voit que des données illisibles.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>QuickNote — fait pour les messages qui n’ont pas besoin de rester.</p>
+        <p class="footer-meta"><span aria-hidden="true">●</span> Aucun traqueur. Aucune publicité.</p>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <noscript>
+      <div class="noscript-banner">QuickNote a besoin de JavaScript pour déchiffrer cette note dans votre navigateur.</div>
+    </noscript>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <meta name="robots" content="noindex">
+    <title>Page introuvable — QuickNote</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="page-note">
+    <a class="skip-link" href="#main">Aller au contenu</a>
+
+    <div class="background" aria-hidden="true">
+      <div class="background-glow background-glow-blue"></div>
+      <div class="background-glow background-glow-warm"></div>
+      <div class="background-grid"></div>
+    </div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="QuickNote, accueil">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M11 9.5h12.7L30 15.8v14.7a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2V11.5a2 2 0 0 1 2-2Z" fill="currentColor"/>
+              <path d="M23.5 9.5v6.3H30" fill="#bcd5ff"/>
+              <path d="M14 19.5h9M14 23.5h6.5" stroke="#3f7ef0" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">Quick<span>Note</span></span>
+        </a>
+
+        <div class="header-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          Privé par défaut
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="container note-main">
+      <section class="state-card" aria-labelledby="notfound-title">
+        <div class="error-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <rect x="11" y="10" width="26" height="28" rx="5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M17 19h14M17 25h9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="36" cy="35" r="7" fill="#fff0ef"/>
+            <path d="m33.5 32.5 5 5m0-5-5 5" stroke="#e5695f" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="eyebrow">Erreur 404</p>
+        <h1 id="notfound-title">Cette page n’existe pas.</h1>
+        <p class="state-lede">
+          Le lien est peut-être incomplet, ou la page a été déplacée.
+        </p>
+        <div class="error-actions">
+          <a class="btn btn-primary" href="/">Retour à l’accueil</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>QuickNote — fait pour les messages qui n’ont pas besoin de rester.</p>
+        <p class="footer-meta"><span aria-hidden="true">●</span> Aucun traqueur. Aucune publicité.</p>
+      </div>
+    </footer>
+  </body>
+</html>
